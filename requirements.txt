@@ -19,11 +19,4 @@ whitenoise==6.5.0
 psycopg2-binary==2.9.5
 python-decouple==3.6
 django-import-export==3.3.4
-python-dotenv
-firebase_admin
-mailchimp_transactional
-mailchimp_marketing
-docxtpl
-num2words
-fcm-django==2.1.0
-reportlab==4.2.2
+
