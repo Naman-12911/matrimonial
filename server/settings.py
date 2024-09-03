@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,19 +76,19 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# DATABASE_URL = "postgres://default:QANmcw5nx7jy@ep-empty-silence-a4zliwzq.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
-# db_config = dj_database_url.config(default=DATABASE_URL)
-
 # DATABASES = {
-#     'default': db_config
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+DATABASE_URL = "postgres://default:QANmcw5nx7jy@ep-empty-silence-a4zliwzq.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+db_config = dj_database_url.config(default=DATABASE_URL)
+
+DATABASES = {
+    'default': db_config
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
