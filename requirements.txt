@@ -14,7 +14,6 @@ MarkupPy==1.14
 odfpy==1.4.1
 openpyxl==3.1.5
 Pillow==10.0.1
-psycopg2==2.9.7
 psycopg2-binary==2.9.8
 PyJWT==2.8.0
 python-decouple==3.6
