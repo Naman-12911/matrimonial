@@ -2,7 +2,7 @@
 
 # Build the project
 
-python3.9 -m ensurepip --default-pip
+
 echo "Building the project..."
 python3.9 -m pip install -r requirements.txt
 
