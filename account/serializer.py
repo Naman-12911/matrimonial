@@ -8,7 +8,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = models.User
-        fields = "__all__"
+        fields =['id', 'name','phone_no','is_verified','gender','height','location','religion','income','bio','family_background','photo1','photo2','photo3','photo4','photo5','date_of_birth',
+                 'job','smoke','drink','password','job_about','buiness_about','buiness']
         extra_kwargs = {
             'password' :{'write_only':True}  #  to does not return password in api ## postman
         }
@@ -22,6 +23,28 @@ class UserSerializers(serializers.ModelSerializer):
             raise serializers.ValidationError("entre strong password")
         instance.save()
         return instance
+    def get_photo1_url(self, obj):
+        request = self.context.get('request')
+        obj.set_request(request)  
+        return obj.photo1_url
+
+    def get_photo2_url(self, obj):
+        request = self.context.get('request')
+        obj.set_request(request)  
+        return obj.photo2_url
+
+    def get_photo3_url(self, obj):
+        request = self.context.get('request')
+        obj.set_request(request)  
+        return obj.photo3_url
+    def get_photo4_url(self, obj):
+        request = self.context.get('request')
+        obj.set_request(request)  
+        return obj.photo4_url
+    def get_photo5_url(self, obj):
+        request = self.context.get('request')
+        obj.set_request(request)  
+        return obj.photo5_url
     
 
 class UserLoginSerializer(serializers.ModelSerializer):
@@ -39,7 +62,7 @@ class UserLoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User
-        fields = "__all__"
+        fields = ['phone_no', 'password', 'tokens',]
 
     def validate(self, attrs):
         phone_no = attrs.get('phone_no', '')
@@ -59,8 +82,17 @@ class UserLoginSerializer(serializers.ModelSerializer):
             raise AuthenticationFailed(f'Please continue your login using {user.auth_provider}')
 
         return {
-            'email': user.email,
+            'phone_no': user.phone_no,
             'tokens': user.tokens,         
         }
 
         return super().validate(attrs)
+    
+class OTPVerificationSerializers(serializers.Serializer):
+    phone_no = serializers.CharField(max_length=15)
+    otp = serializers.CharField(max_length=6)
+    
+class PrefredGenderSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = models.PrefredGender
+        fields = "__all__"

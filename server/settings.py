@@ -134,8 +134,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import datetime
 from datetime import timedelta
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=100),
-    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=100),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=200),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=200),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
@@ -197,8 +197,17 @@ AUTH_USER_MODEL = 'account.User'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+
 
 # MEDIA FOLDER SETTINGS
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#client_id="6265a699-dd85-4980-8e0a-036c8d7ad88e"
+client_id="485af930-19ba-4d3e-8e51-abf9ada319a8"
+#client_secret="dQiPvJfH7lrIJ8I74gC0dcvmeINmWbZ29eCQFfyZ"
+client_secret="2p1uG2L8rbnOQU63mea8NJr9X6nRQdZEmadQ8Dth"
+
+TWILIO_ACCOUNT_SID = "AC887d80ef2cb7ce6fa814d3e146a64c41"
+TWILIO_AUTH_TOKEN="170a0c3be3ae6fcda6cba06a7221841a"
+TWILIO_PHONE_NUMBER="+15515507366"

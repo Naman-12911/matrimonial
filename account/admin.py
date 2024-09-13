@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
-from .models import User
+from .models import User,OneTimePassword,PrefredGender
 
 
 class customUserAdmin(UserAdmin):
@@ -19,7 +19,7 @@ class customUserAdmin(UserAdmin):
         (_('user_info'), {'fields': ( 'phone_no',
                                      )}),
 
-       (_('account_info'), {'fields': ( 'is_verified','gender','height','prefrence',
+       (_('account_info'), {'fields': ( 'is_verified','gender','height',
                                        'location','photo1','photo2','photo3','photo4','photo5',"date_of_birth",'job','smoke','drink','bio'
                                      )}),
   )
@@ -34,3 +34,5 @@ class customUserAdmin(UserAdmin):
   ordering = ('phone_no', )
 admin.site.register(User, customUserAdmin)
 admin.site.unregister(Group)
+admin.site.register(OneTimePassword)
+admin.site.register(PrefredGender)
