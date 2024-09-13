@@ -15,6 +15,7 @@ AUTH_PROVIDERS = {'google': 'google','phone_no':'phone_no'}
 class User(AbstractUser):
     username = None
     # email = models.EmailField(_('email address'), unique=True)
+    # own Profile
     phone_no = models.CharField(blank=True,unique=True,max_length=12)
     is_verified = models.BooleanField(default=False)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)  # Gender field with choices
@@ -22,6 +23,12 @@ class User(AbstractUser):
     name = models.CharField(max_length=100,null=True,blank=True)
     prefrence = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
     location = models.CharField(max_length=100,null=True,blank=True)
+    religion = models.CharField(max_length=100,null=True,blank=True)
+    income = models.BigIntegerField(null=True,blank=True)
+    bio = models.TextField(null=True,blank=True)
+    family_background = models.TextField(null=True,blank=True)
+    family_type = models.CharField(max_length=100)
+    
     photo1 = models.ImageField(null=True,blank=True)
     photo2 = models.ImageField(null=True,blank=True)
     photo3 = models.ImageField(null=True,blank=True)
@@ -31,7 +38,9 @@ class User(AbstractUser):
     job = models.CharField(max_length=100,null=True,blank=True)
     smoke = models.BooleanField(default=False)
     drink = models.BooleanField(default=False)
-    bio = models.TextField(null=True,blank=True)
+    # prefrence
+   
+    
     auth_provider = models.CharField(max_length=255, blank=False, null=False, default=AUTH_PROVIDERS.get('phone_no'))
     USERNAME_FIELD = 'phone_no'
     objects = CustomUserManager() 
@@ -68,3 +77,14 @@ class User(AbstractUser):
     @property
     def photo5_url(self):
         return self.get_photo_url(self.photo5)
+    
+class PrefredGender(models.Model):
+    user = models.OneToOneField(User,models.CASCADE)
+    prefred_gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)  # Gender field with choices
+    prefred_height = models.FloatField(null=True,blank=True)
+    prefred_location = models.CharField(max_length=100,null=True,blank=True)
+    prefred_religion = models.CharField(max_length=100,null=True,blank=True)
+    prefred_income = models.BigIntegerField(null=True,blank=True)
+    family_type = models.CharField(max_length=100)
+    prefred_smoke = models.BooleanField(default=False)
+    prefred_drink = models.BooleanField(default=False)
