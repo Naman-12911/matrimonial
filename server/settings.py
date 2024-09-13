@@ -178,14 +178,14 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     "http://127.0.0.1:8000",
+    "https://s2b-meticulous-mendel.circumeo-apps.net"
 ]
 
 CSRF_TRUSTED_ORIGINS=[
     'http://localhost:3000',
     "http://127.0.0.1:8000",
-     
+    "https://s2b-meticulous-mendel.circumeo-apps.net"    
 ]
-# CORS_ALLOW_HEADERS = ['"https://185.199.52.197",']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
@@ -194,16 +194,14 @@ CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'account.User'
 
 
-# STATIC_URL = '/static/'
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
-# # STATICFILES_DIRS = [
-# #     os.path.join(BASE_DIR, 'static')
-# # ]
-
-# # MEDIA FOLDER SETTINGS
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles_build" / "static"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+# MEDIA FOLDER SETTINGS
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
