@@ -1,7 +1,5 @@
 from django.urls import path,include
-from .views import Register,Login,userData,update_profile,PasswordResetAPIView
-from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
-
+from .views import Register,Login,userData,update_profile
 urlpatterns = [
      path('register/', Register.as_view(),name="register"),
      path('login/', Login.as_view(),name="login"),
