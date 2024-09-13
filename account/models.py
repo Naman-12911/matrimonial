@@ -27,7 +27,7 @@ class User(AbstractUser):
     income = models.BigIntegerField(null=True,blank=True)
     bio = models.TextField(null=True,blank=True)
     family_background = models.TextField(null=True,blank=True)
-    family_type = models.CharField(max_length=100)
+    family_type = models.CharField(max_length=100,null=True,blank=True)
     
     photo1 = models.ImageField(null=True,blank=True)
     photo2 = models.ImageField(null=True,blank=True)
