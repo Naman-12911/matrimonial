@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
+    'corsheaders',# for the react allow cors policy
+    'rest_framework_simplejwt',# simple jwt
+    "rest_framework_simplejwt.token_blacklist", # add token to blacklist
+    'rest_framework',# instal  rest_framework
 ]
 
 MIDDLEWARE = [
@@ -50,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # add middle ware for the react
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -178,13 +183,15 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     "http://127.0.0.1:8000",
-    "https://s2b-meticulous-mendel.circumeo-apps.net"
+    "https://s2b-meticulous-mendel.circumeo-apps.net",
+    "https://matrimonial-d0ga.onrender.com"
 ]
 
 CSRF_TRUSTED_ORIGINS=[
     'http://localhost:3000',
     "http://127.0.0.1:8000",
-    "https://s2b-meticulous-mendel.circumeo-apps.net"    
+    "https://s2b-meticulous-mendel.circumeo-apps.net" ,
+    "https://matrimonial-d0ga.onrender.com/"   
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
