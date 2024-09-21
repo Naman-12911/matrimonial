@@ -183,15 +183,13 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     "http://127.0.0.1:8000",
-    "https://s2b-meticulous-mendel.circumeo-apps.net",
-    "https://matrimonial-d0ga.onrender.com"
+    "http://62.72.29.222"
 ]
 
 CSRF_TRUSTED_ORIGINS=[
     'http://localhost:3000',
     "http://127.0.0.1:8000",
-    "https://s2b-meticulous-mendel.circumeo-apps.net" ,
-    "https://matrimonial-d0ga.onrender.com/"   
+    "http://62.72.29.222"
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
