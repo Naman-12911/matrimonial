@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',# simple jwt
     "rest_framework_simplejwt.token_blacklist", # add token to blacklist
     'rest_framework',# instal  rest_framework
+    'showProfile',
+    'paymentGateway',
 ]
 
 MIDDLEWARE = [

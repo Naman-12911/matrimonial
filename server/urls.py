@@ -20,6 +20,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('account.urls')), # listings app urls
+    path('show-profile/',include('showProfile.urls')), 
+    path('payment-gateway/',include('paymentGateway.urls')), 
 ]
 
 admin.site.site_header = 'second inning matrimony'
