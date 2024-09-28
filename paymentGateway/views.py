@@ -20,7 +20,7 @@ class SubscriptionModelAPIview(APIView):
     def get(self, request, pk=None, format=None):
             if pk:
                 data = self.get_object(pk)
-                serializer = SubscriptionModel(data)
+                serializer = SubscriptionModelSerializers(data)
                 return Response(serializer.data)
 
             else:
