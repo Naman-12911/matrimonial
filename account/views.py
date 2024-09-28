@@ -33,6 +33,7 @@ class Login(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         #user_instance = serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
+
 class userData(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):

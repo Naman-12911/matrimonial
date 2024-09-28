@@ -7,4 +7,5 @@ urlpatterns = [
      path('profile/',userData.as_view(),name="profile"),
      path('update-profile/',update_profile.as_view(),name="update_profile"),
      path('prefrence/',PrefredGenderAPIview.as_view(),name="PrefredGenderAPIview"),
+     path('user-data/',userData.as_view(),name="userData"),
 ]
