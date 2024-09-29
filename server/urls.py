@@ -22,6 +22,7 @@ urlpatterns = [
     path('account/',include('account.urls')), # listings app urls
     path('show-profile/',include('showProfile.urls')), 
     path('payment-gateway/',include('paymentGateway.urls')), 
+    path('advertisment/',include('advertisment.urls')), 
 ]
 
 admin.site.site_header = 'second inning matrimony'

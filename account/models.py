@@ -34,6 +34,42 @@ FAMILY_TYPE_CHOICES = [
     ('Rich Family', 'Rich Family'),
     ('Moderate Family', 'Moderate Family'),
 ]
+# Cast Choices
+CAST_CHOICES = [
+    ('Brahmin', 'Brahmin'),
+    ('Kshatriya', 'Kshatriya'),
+    ('Vaishya', 'Vaishya'),
+    ('Shudra', 'Shudra'),
+    ('Scheduled Caste (SC)', 'Scheduled Caste (SC)'),
+    ('Scheduled Tribe (ST)', 'Scheduled Tribe (ST)'),
+    ('Other', 'Other'),
+]
+
+# Sub-Cast Choices
+SUB_CAST_CHOICES = [
+    # Sub-castes for Brahmin
+    ('Iyer', 'Iyer'),
+    ('Iyengar', 'Iyengar'),
+    ('Saraswat', 'Saraswat'),
+    ('Gaur', 'Gaur'),
+    
+    # Sub-castes for Kshatriya
+    ('Rajput', 'Rajput'),
+    ('Maratha', 'Maratha'),
+    ('Jat', 'Jat'),
+
+    # Sub-castes for Vaishya
+    ('Agarwal', 'Agarwal'),
+    ('Gupta', 'Gupta'),
+    ('Khandelwal', 'Khandelwal'),
+
+    # Sub-castes for Scheduled Caste (SC)
+    ('Mahar', 'Mahar'),
+    ('Chamar', 'Chamar'),
+
+    # Add more as needed
+]
+
 
 AUTH_PROVIDERS = {'google': 'google','phone_no':'phone_no'}
 class User(AbstractUser):
@@ -47,6 +83,8 @@ class User(AbstractUser):
     name = models.CharField(max_length=100,null=True,blank=True)
     location = models.CharField(max_length=100,null=True,blank=True)
     religion = models.CharField(max_length=100,choices=RELIGION_CHOICES,null=True,blank=True)
+    cast = models.CharField(max_length=100,choices=CAST_CHOICES,null=True,blank=True)
+    sub_cast = models.CharField(max_length=100,choices=SUB_CAST_CHOICES,null=True,blank=True)
     income = models.BigIntegerField(null=True,blank=True)
     bio = models.TextField(null=True,blank=True)
     family_background = models.TextField(null=True,blank=True)
@@ -114,6 +152,8 @@ class PrefredGender(models.Model):
     family_type = models.CharField(max_length=100,choices=FAMILY_TYPE_CHOICES,null=True,blank=True)
     prefred_smoke = models.BooleanField(default=False)
     prefred_drink = models.BooleanField(default=False)
+    cast = models.CharField(max_length=100,choices=CAST_CHOICES,null=True,blank=True)
+    sub_cast = models.CharField(max_length=100,choices=SUB_CAST_CHOICES,null=True,blank=True)
     
 class BaseModel(models.Model):
     created_at = models.DateTimeField(default=timezone.now)

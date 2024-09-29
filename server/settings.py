@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',# instal  rest_framework
     'showProfile',
     'paymentGateway',
+    'advertisment',
 ]
 
 MIDDLEWARE = [
