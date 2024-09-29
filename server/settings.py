@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'showProfile',
     'paymentGateway',
     'advertisment',
+    'contact',
 ]
 
 MIDDLEWARE = [

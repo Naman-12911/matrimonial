@@ -23,6 +23,7 @@ urlpatterns = [
     path('show-profile/',include('showProfile.urls')), 
     path('payment-gateway/',include('paymentGateway.urls')), 
     path('advertisment/',include('advertisment.urls')), 
+    path('contact/',include('contact.urls')), 
 ]
 
 admin.site.site_header = 'second inning matrimony'
