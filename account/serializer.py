@@ -9,20 +9,8 @@ class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields =['id', 'name','phone_no','is_verified','gender','height','location','religion','income','bio','family_background','photo1','photo2','photo3','photo4','photo5','date_of_birth',
-                 'job','smoke','drink','password','job_about','buiness_about','buiness']
-        extra_kwargs = {
-            'password' :{'write_only':True}  #  to does not return password in api ## postman
-        }
-    # convert password to hash key
-    def create(self, validated_data):
-        password = validated_data.pop('password',None)
-        instance = self.Meta.model(**validated_data)
-        if password is not None:
-            instance.set_password(password)
-        if len(password) <6:
-            raise serializers.ValidationError("entre strong password")
-        instance.save()
-        return instance
+                 'job','smoke','drink','job_about','buiness_about','buiness']
+
     def get_photo1_url(self, obj):
         request = self.context.get('request')
         obj.set_request(request)  
@@ -91,6 +79,7 @@ class UserLoginSerializer(serializers.ModelSerializer):
 class OTPVerificationSerializers(serializers.Serializer):
     phone_no = serializers.CharField(max_length=15)
     otp = serializers.CharField(max_length=6)
+
     
 class PrefredGenderSerializers(serializers.ModelSerializer):
     class Meta:

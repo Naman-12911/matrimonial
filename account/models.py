@@ -77,7 +77,7 @@ class User(AbstractUser):
     username = None
     # email = models.EmailField(_('email address'), unique=True)
     # own Profile
-    phone_no = models.CharField(blank=True,unique=True,max_length=12)
+    phone_no = models.CharField(blank=True,unique=True,max_length=15)
     is_verified = models.BooleanField(default=False)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)  # Gender field with choices
     height = models.FloatField(null=True,blank=True)
