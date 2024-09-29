@@ -66,6 +66,7 @@ SUB_CAST_CHOICES = [
     # Sub-castes for Scheduled Caste (SC)
     ('Mahar', 'Mahar'),
     ('Chamar', 'Chamar'),
+    ('other','other')
 
     # Add more as needed
 ]
