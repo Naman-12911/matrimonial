@@ -32,41 +32,41 @@ class MatchedProfilesView(APIView):
 
         # Add flexible filtering based on preferences (using OR logic for any one condition)
         # Height: +- 5% range
-        if user_preference.prefred_height:
-            height_filter = Q(height__gte=user_preference.prefred_height * 0.95,
-                              height__lte=user_preference.prefred_height * 1.05)
-            query_conditions |= height_filter
+        # if user_preference.prefred_height:
+        #     height_filter = Q(height__gte=user_preference.prefred_height * 0.95,
+        #                       height__lte=user_preference.prefred_height * 1.05)
+        #     query_conditions |= height_filter
 
-        # Location: partial match using __icontains
-        if user_preference.prefred_location:
-            location_filter = Q(location__icontains=user_preference.prefred_location)
-            query_conditions |= location_filter
+        # # Location: partial match using __icontains
+        # if user_preference.prefred_location:
+        #     location_filter = Q(location__icontains=user_preference.prefred_location)
+        #     query_conditions |= location_filter
 
-        # Religion: partial match using __icontains
-        if user_preference.prefred_religion:
-            religion_filter = Q(religion__icontains=user_preference.prefred_religion)
-            query_conditions |= religion_filter
+        # # Religion: partial match using __icontains
+        # if user_preference.prefred_religion:
+        #     religion_filter = Q(religion__icontains=user_preference.prefred_religion)
+        #     query_conditions |= religion_filter
 
-        # Income: +- 20% range
-        if user_preference.prefred_income:
-            income_filter = Q(income__gte=user_preference.prefred_income * 0.8,
-                              income__lte=user_preference.prefred_income * 1.2)
-            query_conditions |= income_filter
+        # # Income: +- 20% range
+        # if user_preference.prefred_income:
+        #     income_filter = Q(income__gte=user_preference.prefred_income * 0.8,
+        #                       income__lte=user_preference.prefred_income * 1.2)
+        #     query_conditions |= income_filter
 
-        # Family Type: partial match using __icontains
-        if user_preference.family_type:
-            family_type_filter = Q(family_type__icontains=user_preference.family_type)
-            query_conditions |= family_type_filter
+        # # Family Type: partial match using __icontains
+        # if user_preference.family_type:
+        #     family_type_filter = Q(family_type__icontains=user_preference.family_type)
+        #     query_conditions |= family_type_filter
 
-        # Smoke: Exact match since it's boolean
-        if user_preference.prefred_smoke is not None:
-            smoke_filter = Q(smoke=user_preference.prefred_smoke)
-            query_conditions |= smoke_filter
+        # # Smoke: Exact match since it's boolean
+        # if user_preference.prefred_smoke is not None:
+        #     smoke_filter = Q(smoke=user_preference.prefred_smoke)
+        #     query_conditions |= smoke_filter
 
-        # Drink: Exact match since it's boolean
-        if user_preference.prefred_drink is not None:
-            drink_filter = Q(drink=user_preference.prefred_drink)
-            query_conditions |= drink_filter
+        # # Drink: Exact match since it's boolean
+        # if user_preference.prefred_drink is not None:
+        #     drink_filter = Q(drink=user_preference.prefred_drink)
+        #     query_conditions |= drink_filter
 
         # Apply the OR conditions
         queryset = queryset.filter(query_conditions)
