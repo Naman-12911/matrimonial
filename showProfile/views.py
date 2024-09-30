@@ -89,10 +89,10 @@ class MatchedProfilesView(APIView):
         user_gender = user.gender
 
         # Get user's preferred gender
-        try:
-            user_preference = PrefredGender.objects.get(user=user)
-        except PrefredGender.DoesNotExist:
-            return Response({"detail": "Preferred gender not found for the user."}, status=400)
+        # try:
+        #     user_preference = PrefredGender.objects.get(user=user)
+        # except PrefredGender.DoesNotExist:
+        #     return Response({"detail": "Preferred gender not found for the user."}, status=400)
 
         # Determine opposite gender for filtering (assuming only male 'M' and female 'F')
         opposite_gender = 'F' if user_gender == 'M' else 'M'
