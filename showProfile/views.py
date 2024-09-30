@@ -84,30 +84,62 @@ from django.http.response import Http404
 class MatchedProfilesView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request):
-        user = request.user
-        user_gender = user.gender
+    # def get(self, request):
+    #     user = request.user
+    #     user_gender = user.gender
 
-        # Get user's preferred gender
-        # try:
-        #     user_preference = PrefredGender.objects.get(user=user)
-        # except PrefredGender.DoesNotExist:
-        #     return Response({"detail": "Preferred gender not found for the user."}, status=400)
+    #     # Get user's preferred gender
+    #     # try:
+    #     #     user_preference = PrefredGender.objects.get(user=user)
+    #     # except PrefredGender.DoesNotExist:
+    #     #     return Response({"detail": "Preferred gender not found for the user."}, status=400)
 
-        # Determine opposite gender for filtering (assuming only male 'M' and female 'F')
-        opposite_gender = 'F' if user_gender == 'M' else 'M'
+    #     # Determine opposite gender for filtering (assuming only male 'M' and female 'F')
+    #     opposite_gender = 'F' if user_gender == 'M' else 'M'
 
-        # Fetch users of the opposite gender
-        queryset = User.objects.filter(gender=opposite_gender)
+    #     # Fetch users of the opposite gender
+    #     queryset = User.objects.filter(gender=opposite_gender)
 
-        # Shuffle the results randomly
-        profile_list = list(queryset)
-        random.shuffle(profile_list)
+    #     # Shuffle the results randomly
+    #     profile_list = list(queryset)
+    #     random.shuffle(profile_list)
 
-        # Serialize the results
-        serializer = UserSerializers(profile_list, many=True, context={'request': request})
+    #     # Serialize the results
+    #     serializer = UserSerializers(profile_list, many=True, context={'request': request})
 
-        return Response(serializer.data)
+    #     return Response(serializer.data)
+    def get_object(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise Http404
+        
+    def get(self, request, pk=None, format=None):
+            if pk:
+                data = self.get_object(pk)
+                serializer = UserSerializers(data)
+                return Response(serializer.data)
+
+            else:
+                user = request.user
+                user_gender = user.gender
+                # data = User.objects.all()
+                # serializer = UserSerializers(data, many=True)
+
+                # return Response(serializer.data)
+                opposite_gender = 'F' if user_gender == 'M' else 'M'
+
+                # Fetch users of the opposite gender
+                queryset = User.objects.filter(gender=opposite_gender)
+
+                # Shuffle the results randomly
+                profile_list = list(queryset)
+                random.shuffle(profile_list)
+
+                # Serialize the results
+                serializer = UserSerializers(profile_list, many=True, context={'request': request})
+
+                return Response(serializer.data)
 
 class SwipeOrMatchAPIview(APIView):
     permission_classes = [IsAuthenticated]
