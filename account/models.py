@@ -103,6 +103,7 @@ class User(AbstractUser):
     buiness = models.BooleanField(default=False)
     smoke = models.BooleanField(default=False)
     drink = models.BooleanField(default=False)
+    is_profile_created = models.BooleanField(default=False)
     auth_provider = models.CharField(max_length=255, blank=False, null=False, default=AUTH_PROVIDERS.get('phone_no'))
     USERNAME_FIELD = 'phone_no'
     objects = CustomUserManager() 

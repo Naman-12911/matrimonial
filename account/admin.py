@@ -21,7 +21,7 @@ class customUserAdmin(UserAdmin):
 
        (_('account_info'), {'fields': ( 'is_verified','gender','height',
                                        'location','photo1','photo2','photo3','photo4','photo5',"date_of_birth",'job','smoke','drink','bio',
-                                       'religion', 'income','family_background','family_type','job_about' ,'buiness_about' ,
+                                       'religion', 'income','family_background','family_type','job_about' ,'buiness_about' ,'is_profile_created'
                                      )}),
   )
   add_fieldsets = (

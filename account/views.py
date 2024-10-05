@@ -89,6 +89,7 @@ class OTPVerificationView(APIView):
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
                 'phone_number': user.phone_no,
+                'is_profile_created':user.is_profile_created,
             }, status=status.HTTP_200_OK)
 
         # Check if the OTP is expired
@@ -107,6 +108,7 @@ class OTPVerificationView(APIView):
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
                 'phone_number': user.phone_no,
+                'is_profile_created':user.is_profile_created,
             }, status=status.HTTP_200_OK)
 
         return Response({'detail': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)
