@@ -9,7 +9,7 @@ class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields =['id', 'name','phone_no','is_verified','gender','height','location','religion','income','bio','family_background','photo1','photo2','photo3','photo4','photo5','date_of_birth',
-                 'job','smoke','drink','job_about','buiness_about','buiness','is_profile_created']
+                 'job','smoke','drink','job_about','buiness_about','buiness','is_profile_created','medical_history','medical_history_if_any']
 
     def get_photo1_url(self, obj):
         request = self.context.get('request')
