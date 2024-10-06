@@ -71,6 +71,11 @@ SUB_CAST_CHOICES = [
     # Add more as needed
 ]
 
+SMOKE__DRINK_CHOICE = [
+    ('occasionally', 'occasionally'),
+    ('Regularly', 'Regularly'),
+    ('No', 'No'),
+]
 
 AUTH_PROVIDERS = {'google': 'google','phone_no':'phone_no'}
 class User(AbstractUser):
@@ -101,8 +106,10 @@ class User(AbstractUser):
     buiness_about = models.CharField(max_length=100,null=True,blank=True)
     job = models.BooleanField(default=False)
     buiness = models.BooleanField(default=False)
-    smoke = models.BooleanField(default=False)
-    drink = models.BooleanField(default=False)
+    # smoke = models.BooleanField(default=False)
+    # drink = models.BooleanField(default=False)
+    smoke = models.CharField(max_length=15, choices=SMOKE__DRINK_CHOICE, blank=True) 
+    drink = models.CharField(max_length=15, choices=SMOKE__DRINK_CHOICE, blank=True)  
     is_profile_created = models.BooleanField(default=False)
     auth_provider = models.CharField(max_length=255, blank=False, null=False, default=AUTH_PROVIDERS.get('phone_no'))
     USERNAME_FIELD = 'phone_no'
@@ -152,8 +159,10 @@ class PrefredGender(models.Model):
     prefred_religion = models.CharField(max_length=100,choices=RELIGION_CHOICES,null=True,blank=True)
     prefred_income = models.BigIntegerField(null=True,blank=True)
     family_type = models.CharField(max_length=100,choices=FAMILY_TYPE_CHOICES,null=True,blank=True)
-    prefred_smoke = models.BooleanField(default=False)
-    prefred_drink = models.BooleanField(default=False)
+    # prefred_smoke = models.BooleanField(default=False)
+    # prefred_drink = models.BooleanField(default=False)
+    prefred_smoke = models.CharField(max_length=15, choices=SMOKE__DRINK_CHOICE, blank=True) 
+    prefred_drink = models.CharField(max_length=15, choices=SMOKE__DRINK_CHOICE, blank=True)
     cast = models.CharField(max_length=100,choices=CAST_CHOICES,null=True,blank=True)
     sub_cast = models.CharField(max_length=100,choices=SUB_CAST_CHOICES,null=True,blank=True)
     
