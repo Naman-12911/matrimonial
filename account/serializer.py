@@ -8,7 +8,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = models.User
-        fields = "__all__"
+        fields = ['phone_no','is_verified','gender','height','name','location','religion','cast','sub_cast','income',
+                  'bio','family_background','family_type','photo1','photo2','photo3','photo4','photo5','date_of_birth','job_about',
+                  'buiness_about','job','buiness','medical_history','medical_history_if_any','smoke','drink','is_profile_created']
 
     def get_photo1_url(self, obj):
         request = self.context.get('request')
