@@ -36,7 +36,6 @@ class UserSerializers(serializers.ModelSerializer):
 
 class UserLoginSerializer(serializers.ModelSerializer):
     phone_no = serializers.CharField(max_length=12, min_length=3)
-    password = serializers.CharField(max_length=68, min_length=6, write_only=True)
     tokens = serializers.SerializerMethodField()
 
     def get_tokens(self, obj):
@@ -49,13 +48,13 @@ class UserLoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User
-        fields = ['phone_no', 'password', 'tokens',]
+        fields = ['phone_no', 'tokens',]
 
     def validate(self, attrs):
         phone_no = attrs.get('phone_no', '')
-        password = attrs.get('password', '')
+
         filtered_user_by_phone_no = models.User.objects.filter(phone_no=phone_no)
-        user = auth.authenticate(phone_no=phone_no, password=password)
+        user = auth.authenticate(phone_no=phone_no,)
 
         if filtered_user_by_phone_no.exists() and filtered_user_by_phone_no[0].auth_provider != 'phone_no':
             raise AuthenticationFailed(
