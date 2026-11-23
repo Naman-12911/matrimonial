@@ -213,10 +213,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 #client_id="6265a699-dd85-4980-8e0a-036c8d7ad88e"
-client_id="485af930-19ba-4d3e-8e51-abf9ada319a8"
+client_id=""
 #client_secret="dQiPvJfH7lrIJ8I74gC0dcvmeINmWbZ29eCQFfyZ"
-client_secret="2p1uG2L8rbnOQU63mea8NJr9X6nRQdZEmadQ8Dth"
+client_secret=""
 
-TWILIO_ACCOUNT_SID = "AC77c338e00136e1de23807ccf5f699b3b"
-TWILIO_AUTH_TOKEN="b77b469a06d8410b9699a77fb8bc7ebc"
-TWILIO_PHONE_NUMBER="+18707298342"
+TWILIO_ACCOUNT_SID = ""
+TWILIO_AUTH_TOKEN=""
+TWILIO_PHONE_NUMBER=""
